@@ -46,6 +46,12 @@
         <mxCell id="HEdC6EzMkmrNth7F3knK-19" value="Блок питания" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;" vertex="1" parent="1">
           <mxGeometry x="320" y="70" width="120" height="80" as="geometry" />
         </mxCell>
+        <mxCell id="HEdC6EzMkmrNth7F3knK-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="HEdC6EzMkmrNth7F3knK-23" target="HEdC6EzMkmrNth7F3knK-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="HEdC6EzMkmrNth7F3knK-23" value="Магниты" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;" vertex="1" parent="1">
+          <mxGeometry x="880" y="190" width="120" height="80" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
