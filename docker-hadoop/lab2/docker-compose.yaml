@@ -1,0 +1,48 @@
+version: "2"
+services:
+   namenode:
+      image: apache/hadoop:3
+      hostname: namenode
+      command: ["hdfs", "namenode"]
+      ports:
+        - 9870:9870
+      env_file:
+        - ./config
+      environment:
+          ENSURE_NAMENODE_DIR: "/tmp/hadoop-root/dfs/name"
+      volumes:
+        - ./data/namenode_home:/tmp/hadoop-hadoop/dfs/name
+        - ./init-hdfs.sh:/init-hdfs.sh
+        - ./create_files.sh:/create_files.sh
+        - ./compare_hdfs_files.py:/compare_hdfs_files.py
+        - ./run_it_docker.sh:/run_it_docker.sh
+        - ./python.sh:/python.sh
+
+        - ./mapper_avg_wordlen.py:/mapper_avg_wordlen.py
+        - ./reducer_avg_wordlen.py:/reducer_avg_wordlen.py
+
+        - ./files/:/data
+   datanode:
+      image: apache/hadoop:3
+      command: ["hdfs", "datanode"]
+      env_file:
+        - ./config      
+      volumes:
+        - ./data/datanode_home:/tmp/hadoop-root/dfs/data
+   resourcemanager:
+      image: apache/hadoop:3
+      hostname: resourcemanager
+      command: ["yarn", "resourcemanager"]
+      ports:
+         - 8088:8088
+      env_file:
+        - ./config
+      volumes:
+        - ./test.sh:/opt/test.sh
+   nodemanager:
+      image: apache/hadoop:3
+      command: ["yarn", "nodemanager"]
+      env_file:
+        - ./config
+
+
