@@ -16,7 +16,7 @@
         <mxCell id="HEdC6EzMkmrNth7F3knK-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="HEdC6EzMkmrNth7F3knK-6" target="HEdC6EzMkmrNth7F3knK-17" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="HEdC6EzMkmrNth7F3knK-6" value="USBCANB адаптер" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="HEdC6EzMkmrNth7F3knK-6" value="USB-CAN-B адаптер" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="320" y="200" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="HEdC6EzMkmrNth7F3knK-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="HEdC6EzMkmrNth7F3knK-7" target="HEdC6EzMkmrNth7F3knK-11" edge="1">
