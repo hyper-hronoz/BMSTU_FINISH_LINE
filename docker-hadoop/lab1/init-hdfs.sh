@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Wait for the NameNode to fully start
-sleep 10
+sleep 1
 
 echo "Creating HDFS directories..."
 hdfs dfs -mkdir -p /user/hduser/Hadoop

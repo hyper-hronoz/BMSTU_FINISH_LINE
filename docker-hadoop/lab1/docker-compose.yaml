@@ -13,7 +13,10 @@ services:
       volumes:
         - ./data/namenode_home:/tmp/hadoop-hadoop/dfs/name
         - ./init-hdfs.sh:/init-hdfs.sh
-        - ./compare_hdfs_files.py:/tmp/compare_hdfs_files.py
+        - ./create_files.sh:/create_files.sh
+        - ./compare_hdfs_files.py:/compare_hdfs_files.py
+        - ./run_it_docker.sh:/run_it_docker.sh
+        - ./python.sh:/python.sh
    datanode:
       image: apache/hadoop:3
       command: ["hdfs", "datanode"]
