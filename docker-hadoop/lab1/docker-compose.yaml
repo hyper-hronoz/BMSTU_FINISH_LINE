@@ -18,6 +18,9 @@ services:
         - ./run_it_docker.sh:/run_it_docker.sh
         - ./python.sh:/python.sh
    datanode:
+      hostname: datanode
+      ports:
+        - 9864:9864      
       image: apache/hadoop:3
       command: ["hdfs", "datanode"]
       env_file:

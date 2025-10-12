@@ -5,7 +5,7 @@ echo "=== Создание тестовых файлов ==="
 
 # Создаём два файла локально
 FILE1="/tmp/file1.txt"
-FILE2="/tmp/file2.txt"
+FILE2="/tmp/_file2.txt"
 
 echo -e "Hello Hadoop!\nThis is file 1." > $FILE1
 echo -e "Hello Hadoop!\nThis is file 2." > $FILE2
