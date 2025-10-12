@@ -1,0 +1,48 @@
+<configuration>
+    <!-- ResourceManager hostname -->
+    <property>
+        <name>yarn.resourcemanager.hostname</name>
+        <value>resourcemanager</value>
+    </property>
+
+    <!-- NodeManager aux services -->
+    <property>
+        <name>yarn.nodemanager.aux-services</name>
+        <value>mapreduce_shuffle</value>
+    </property>
+
+    <!-- Отключение проверки памяти -->
+    <property>
+        <name>yarn.nodemanager.vmem-check-enabled</name>
+        <value>false</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.pmem-check-enabled</name>
+        <value>false</value>
+    </property>
+
+    <!-- Пауза перед удалением логов контейнера -->
+    <property>
+        <name>yarn.nodemanager.delete.debug-delay-sec</name>
+        <value>600</value>
+    </property>
+
+    <!-- 🔹 NodeManager слушает все интерфейсы -->
+    <property>
+        <name>yarn.nodemanager.hostname</name>
+        <value>0.0.0.0</value>
+    </property>
+
+    <!-- 🔹 Веб-интерфейс NodeManager -->
+    <property>
+        <name>yarn.nodemanager.webapp.address</name>
+        <value>0.0.0.0:8042</value>
+    </property>
+
+    <!-- 🔹 Папка для логов контейнеров -->
+    <property>
+        <name>yarn.nodemanager.log-dirs</name>
+        <value>/tmp/logs/hadoop</value>
+    </property>
+</configuration>
+
