@@ -1,0 +1,6 @@
+dfs.replication: 1
+dfs.namenode.rpc-address: namenode:8020
+dfs.datanode.http.address: 0.0.0.0:9864
+dfs.webhdfs.enabled: true
+dfs.datanode.hostname: localhost
+dfs.permissions.enabled: false

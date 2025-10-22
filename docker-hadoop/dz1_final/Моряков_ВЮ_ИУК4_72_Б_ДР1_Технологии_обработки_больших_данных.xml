@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<indexing>
+ <object alt="" name="Рисунок 1" object_type="graphic"/>
+ <object alt="" name="Image4" object_type="graphic"/>
+ <object alt="" name="Image6" object_type="graphic"/>
+ <object alt="" name="Image8" object_type="graphic"/>
+ <object index="36" name="Table1" object_type="table"/>
+ <paragraph index="41" node_type="writer" parent_index="36">Министерство науки и высшего образования Российской Федерации</paragraph>
+ <paragraph index="42" node_type="writer" parent_index="36">Калужский филиал федерального государственного автономного образовательного учреждения высшего образования</paragraph>
+ <paragraph index="43" node_type="writer" parent_index="36">«Московский государственный технический университет 
+имени Н.Э. Баумана 
+(национальный исследовательский университет)»</paragraph>
+ <paragraph index="44" node_type="writer" parent_index="36">(КФ МГТУ им. Н.Э. Баумана)</paragraph>
+ <paragraph index="48" node_type="writer">ФАКУЛЬТЕТ ИУК «Информатика и управление</paragraph>
+ <paragraph index="49" node_type="writer">КАФЕДРА ИУК4 «Программное обеспечение ЭВМ, информационные технологи»</paragraph>
+ <paragraph index="56" node_type="writer">ЛАБОРАТОРНАЯ РАБОТА</paragraph>
+ <paragraph index="58" node_type="writer">«ОСНОВЫ SPARK. УСТАНОВКА SPARK. ОСНОВНЫЕ КОМАНДЫ ДЛЯ РАБОТЫ С RDD»</paragraph>
+ <paragraph index="60" node_type="writer">по дисциплине: «Технологии обработки больших данных»</paragraph>
+ <object index="63" name="Table2" object_type="table"/>
+ <paragraph index="65" node_type="writer" parent_index="63">Выполнил: студент группы ИУК4-72Б</paragraph>
+ <paragraph index="74" node_type="writer" parent_index="63">В.Ю. Моряков</paragraph>
+ <paragraph index="80" node_type="writer" parent_index="63">(Подпись)</paragraph>
+ <paragraph index="86" node_type="writer" parent_index="63">(И.О. Фамилия)</paragraph>
+ <paragraph index="89" node_type="writer" parent_index="63">Проверил(-а):</paragraph>
+ <paragraph index="98" node_type="writer" parent_index="63">С. Е. Голубева</paragraph>
+ <paragraph index="104" node_type="writer" parent_index="63">(Подпись)</paragraph>
+ <paragraph index="110" node_type="writer" parent_index="63">(И.О. Фамилия)</paragraph>
+ <paragraph index="114" node_type="writer" parent_index="63">Дата сдачи (защиты):</paragraph>
+ <paragraph index="115" node_type="writer" parent_index="63">Результаты сдачи (защиты):</paragraph>
+ <paragraph index="125" node_type="writer" parent_index="63">- Балльная оценка:</paragraph>
+ <paragraph index="126" node_type="writer" parent_index="63">- Оценка: </paragraph>
+ <paragraph index="135" node_type="writer">Калуга, 2025</paragraph>
+ <paragraph index="136" node_type="writer">Цель работы: формирование практических навыков работы с платформой Apache Spark для обработки больших данных.</paragraph>
+ <paragraph index="137" node_type="writer">Задачи: </paragraph>
+ <paragraph index="138" node_type="writer">Изучить основы Apache Spark.</paragraph>
+ <paragraph index="139" node_type="writer">Научиться устанавливать и конфигурировать Spark.</paragraph>
+ <paragraph index="140" node_type="writer">Уметь работать с RDD.</paragraph>
+ <paragraph index="141" node_type="writer">Получить навыки написания программ для обработки больших данных.</paragraph>
+ <paragraph index="142" node_type="writer">Задание:</paragraph>
+ <paragraph index="143" node_type="writer">Написать скрипт для платформы Apache Spark для решения задачи, указанной в варианте. В качестве входных текстовых файлов можно использовать книги в txt формате из библиотеки Project Gutenberg: www.gutenberg.org </paragraph>
+ <paragraph index="144" node_type="writer">Список стоп-слов: </paragraph>
+ <paragraph index="145" node_type="writer">https://github.com/Alir3z4/stop-words/blob/master/english.txt</paragraph>
+ <paragraph index="146" node_type="writer">Вариант №17</paragraph>
+ <paragraph index="147" node_type="writer">Для двух текстовых файлов подсчитать количество слов, которые встречаются одновременно и в первом, и во втором файле. Результат сохранить в файл в виде пар ключ-значение, где ключ – количество общих слов, значение – само слово.</paragraph>
+ <paragraph index="149" node_type="writer">Порядок выполнения работы:</paragraph>
+ <paragraph index="150" node_type="writer">Подтягиваем контейнер spark:</paragraph>
+ <paragraph index="152" node_type="writer">	Прокинем переменные среды:</paragraph>
+ <paragraph index="159" node_type="writer">Предварительно создадим тестовые директории и заполним входными данными: </paragraph>
+ <paragraph index="161" node_type="writer">hdfs dfs -mkdir -p /files</paragraph>
+ <paragraph index="162" node_type="writer">hdfs dfs -put /files/file1.txt /files/</paragraph>
+ <paragraph index="163" node_type="writer">hdfs dfs -put /files/file2.txt /files/</paragraph>
+ <paragraph index="164" node_type="writer">hdfs dfs -ls /files</paragraph>
+ <paragraph index="166" node_type="writer">Создадим скрипт выполнения программы на python: </paragraph>
+ <paragraph index="168" node_type="writer">compare_hdfs_files.sh</paragraph>
+ <paragraph index="170" node_type="writer">from pyspark import SparkContext, SparkConf</paragraph>
+ <paragraph index="172" node_type="writer">def normalize(line):</paragraph>
+ <paragraph index="173" node_type="writer">    return [word.lower() for word in line.split() if word.isalpha()]</paragraph>
+ <paragraph index="175" node_type="writer">if __name__ == &quot;__main__&quot;:</paragraph>
+ <paragraph index="176" node_type="writer">    conf = SparkConf().setAppName(&quot;CompareTwoFiles&quot;)</paragraph>
+ <paragraph index="177" node_type="writer">    sc = SparkContext(conf=conf)</paragraph>
+ <paragraph index="179" node_type="writer">    file1 = &quot;hdfs://namenode:9000/files/file1.txt&quot;</paragraph>
+ <paragraph index="180" node_type="writer">    file2 = &quot;hdfs://namenode:9000/files/file2.txt&quot;</paragraph>
+ <paragraph index="182" node_type="writer">    words1 = sc.textFile(file1).flatMap(normalize).map(lambda w: (w, 1))</paragraph>
+ <paragraph index="183" node_type="writer">    words2 = sc.textFile(file2).flatMap(normalize).map(lambda w: (w, 1))</paragraph>
+ <paragraph index="185" node_type="writer">    counts1 = words1.reduceByKey(lambda a, b: a + b)</paragraph>
+ <paragraph index="186" node_type="writer">    counts2 = words2.reduceByKey(lambda a, b: a + b)</paragraph>
+ <paragraph index="188" node_type="writer">    common = counts1.join(counts2)</paragraph>
+ <paragraph index="189" node_type="writer">    common_total = common.map(lambda x: (x[1][0] + x[1][1], x[0]))</paragraph>
+ <paragraph index="191" node_type="writer">    common_total.saveAsTextFile(&quot;hdfs://namenode:9000/data/common_words&quot;)</paragraph>
+ <paragraph index="192" node_type="writer">    sc.stop()</paragraph>
+ <paragraph index="195" node_type="writer">Запуск программы:</paragraph>
+ <paragraph index="197" node_type="writer">hadoop@master:~$ /spark/bin/spark-submit \</paragraph>
+ <paragraph index="198" node_type="writer">  --master local[*] \</paragraph>
+ <paragraph index="199" node_type="writer">  /opt/compare_hdfs_files.py</paragraph>
+ <paragraph index="201" node_type="writer">Результат работы программы:</paragraph>
+ <paragraph index="203" node_type="writer">Рис. 1 – Результаты выполнения программы</paragraph>
+ <paragraph index="206" node_type="writer">Вывод: в ходе выполнения лабораторной работы были сформированы практические навыки работы с платформой Apache Spark для обработки больших данных.</paragraph>
+</indexing>

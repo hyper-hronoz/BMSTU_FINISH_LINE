@@ -1,0 +1,78 @@
+version: "2"
+services:
+   namenode:
+      image: apache/hadoop:3
+      hostname: namenode
+      command: ["hdfs", "namenode"]
+      ports:
+        - 9870:9870
+      env_file:
+        - ./config
+      environment:
+          ENSURE_NAMENODE_DIR: "/tmp/hadoop-root/dfs/name"
+      volumes:
+        - ./data/namenode_home:/tmp/hadoop-hadoop/dfs/name
+        - ./init-hdfs.sh:/init-hdfs.sh
+        - ./create_files.sh:/create_files.sh
+        - ./compare_hdfs_files.py:/compare_hdfs_files.py
+        - ./run_it_docker.sh:/run_it_docker.sh
+        - ./python.sh:/python.sh
+
+        - ./scripts/:/scripts
+
+        - ./files/:/files
+   datanode:
+      image: apache/hadoop:3
+      hostname: datanode
+      command: ["hdfs", "datanode"]
+      ports:
+        - 9864:9864      
+      env_file:
+        - ./config      
+      volumes:
+        - ./data/datanode_home:/tmp/hadoop-root/dfs/data
+   resourcemanager:
+      image: apache/hadoop:3
+      hostname: resourcemanager
+      command: ["yarn", "resourcemanager"]
+      ports:
+         - 8088:8088
+      env_file:
+        - ./config
+      volumes:
+        - ./test.sh:/opt/test.sh
+   nodemanager:
+      hostname: nodemanager
+      ports:
+         - 8042:8042
+      image: apache/hadoop:3
+      command: ["yarn", "nodemanager"]
+      env_file:
+        - ./config
+   spark:
+      image: apache/spark:3.5.1
+      hostname: spark
+      command: ["/bin/bash", "-c", "sleep infinity"]
+      env_file:
+        - ./config
+      environment:
+         - HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop
+         - YARN_CONF_DIR=/opt/hadoop/etc/hadoop
+      volumes:
+         - ./scripts/compare_hdfs_files.py:/opt/compare_hdfs_files.py
+         - ./run_it_spark.sh:/run_it_spark.sh
+         - ./hadoop-conf:/opt/hadoop/etc/hadoop
+         
+
+         # start my code 
+         - ./spark_app.py:/opt/spark_app.py
+         - ./files:/files
+         # end my code
+      depends_on:
+         - namenode
+         - datanode
+         - resourcemanager
+         - nodemanager
+
+
+
