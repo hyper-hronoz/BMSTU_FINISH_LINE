@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<indexing>
+ <object alt="" name="Рисунок 1" object_type="graphic"/>
+ <object index="12" name="Table1" object_type="table"/>
+ <paragraph index="17" node_type="writer" parent_index="12">Министерство науки и высшего образования Российской Федерации</paragraph>
+ <paragraph index="18" node_type="writer" parent_index="12">Калужский филиал федерального государственного автономного образовательного учреждения высшего образования</paragraph>
+ <paragraph index="19" node_type="writer" parent_index="12">«Московский государственный технический университет 
+имени Н.Э. Баумана 
+(национальный исследовательский университет)»</paragraph>
+ <paragraph index="20" node_type="writer" parent_index="12">(КФ МГТУ им. Н.Э. Баумана)</paragraph>
+ <paragraph index="24" node_type="writer">ФАКУЛЬТЕТ ИУК Информатика и управление</paragraph>
+ <paragraph index="25" node_type="writer">КАФЕДРА ИУК4 Программное обеспечение ЭВМ, информационные технологии</paragraph>
+ <paragraph index="32" node_type="writer">ЛАБОРАТОРНАЯ РАБОТА</paragraph>
+ <paragraph index="34" node_type="writer">«MAHOUT. СИСТЕМА РЕКОМЕНДАЦИЙ»</paragraph>
+ <paragraph index="36" node_type="writer">по дисциплине: «Технологии обработки больших данных»</paragraph>
+ <object index="39" name="Table2" object_type="table"/>
+ <paragraph index="41" node_type="writer" parent_index="39">Выполнил: студент группы ИУК4-72Б</paragraph>
+ <paragraph index="50" node_type="writer" parent_index="39">Моряков В.Ю.</paragraph>
+ <paragraph index="56" node_type="writer" parent_index="39">(Подпись)</paragraph>
+ <paragraph index="62" node_type="writer" parent_index="39">(И.О. Фамилия)</paragraph>
+ <paragraph index="65" node_type="writer" parent_index="39">Проверил:</paragraph>
+ <paragraph index="74" node_type="writer" parent_index="39">Голубева С.Е.</paragraph>
+ <paragraph index="80" node_type="writer" parent_index="39">(Подпись)</paragraph>
+ <paragraph index="86" node_type="writer" parent_index="39">(И.О. Фамилия)</paragraph>
+ <paragraph index="90" node_type="writer" parent_index="39">Дата сдачи (защиты):</paragraph>
+ <paragraph index="91" node_type="writer" parent_index="39">Результаты сдачи (защиты):</paragraph>
+ <paragraph index="100" node_type="writer" parent_index="39">- Балльная оценка:</paragraph>
+ <paragraph index="101" node_type="writer" parent_index="39">- Оценка: </paragraph>
+ <paragraph index="113" node_type="writer">Калуга, 2025</paragraph>
+ <paragraph index="115" node_type="writer">Цель: формирование практических навыков работы с библиотекой Mahout для создания рекомендательных систем на основе больших данных.</paragraph>
+ <paragraph index="117" node_type="writer">Задачи:</paragraph>
+ <paragraph index="118" node_type="writer">Изучить алгоритмы системы рекомендаций на основе коллаборативной фильтрации.</paragraph>
+ <paragraph index="119" node_type="writer">Научиться реализовывать системы рекомендаций с помощью Apache Mahout.</paragraph>
+ <paragraph index="120" node_type="writer">Научиться выполнять оценку правильности работы системы рекомендаций.</paragraph>
+ <paragraph index="122" node_type="writer">Вариант №17</paragraph>
+ <paragraph index="124" node_type="writer">Задание:</paragraph>
+ <paragraph index="126" node_type="writer">Реализовать 2 системы рекомендаций фильмов для пользователя на основе его оценок. Использовать реализации рекомендательных систем и метрик, указанные в варианте задания. Сравнить оценки правильности работы всех систем. Для сравнения запускать алгоритм оценки как минимум 10 раз и использовать среднее значение оценки для каждой из систем.</paragraph>
+ <paragraph index="128" node_type="writer">TreeClusteringRecommender с метрикой LogLikelihoodSimilarity;</paragraph>
+ <paragraph index="129" node_type="writer">SVDRecommender</paragraph>
+ <paragraph index="131" node_type="writer">Смысл алгоритмов:</paragraph>
+ <paragraph index="133" node_type="writer">TreeClusteringRecommender — это кластеризационный рекомендатель.
+Он строит иерархическое дерево кластеров пользователей или элементов, чтобы объединить похожие объекты (например, пользователей с похожими вкусами) и затем использовать это для рекомендаций.</paragraph>
+ <paragraph index="134" node_type="writer">SVDRecommender — это модельный подход из класса матриц факторизации.
+Он рассматривает данные (пользователь × элемент × рейтинг) как большую разреженную матрицу и пытается аппроксимировать её с помощью скрытых факторов.</paragraph>
+ <paragraph index="136" node_type="writer">U — матрица пользователей (их скрытые предпочтения),</paragraph>
+ <paragraph index="137" node_type="writer">Σ — диагональная матрица значимости факторов</paragraph>
+ <paragraph index="138" node_type="writer">V — матрица элементов (их скрытые характеристики).</paragraph>
+ <paragraph index="140" node_type="writer">Запуск и результаты выполнения:</paragraph>
+ <paragraph index="142" node_type="writer">#: mvn clean compile</paragraph>
+ <paragraph index="143" node_type="writer">#: mvn exec:java -Dexec.mainClass=&quot;com.example.recommender.MovieRecommender&quot;</paragraph>
+ <paragraph index="145" node_type="writer">Data loaded: 10 users, 725 movies</paragraph>
+ <paragraph index="147" node_type="writer">==========================================</paragraph>
+ <paragraph index="148" node_type="writer"> RECOMMENDATION SYSTEMS COMPARISON</paragraph>
+ <paragraph index="149" node_type="writer">==========================================</paragraph>
+ <paragraph index="151" node_type="writer">--- DEMO RECOMMENDATIONS ---</paragraph>
+ <paragraph index="153" node_type="writer">Recommendations for user 1:</paragraph>
+ <paragraph index="154" node_type="writer">User-Based (as TreeClustering replacement):</paragraph>
+ <paragraph index="155" node_type="writer">  Movie 1079 (score: 5.000)</paragraph>
+ <paragraph index="156" node_type="writer">  Movie 4034 (score: 5.000)</paragraph>
+ <paragraph index="157" node_type="writer">  Movie 3081 (score: 5.000)</paragraph>
+ <paragraph index="158" node_type="writer">SVD:</paragraph>
+ <paragraph index="159" node_type="writer">  Movie 34405 (score: 4.656)</paragraph>
+ <paragraph index="160" node_type="writer">  Movie 7153 (score: 4.656)</paragraph>
+ <paragraph index="161" node_type="writer">  Movie 44665 (score: 4.656)</paragraph>
+ <paragraph index="163" node_type="writer">Recommendations for user 2:</paragraph>
+ <paragraph index="164" node_type="writer">User-Based (as TreeClustering replacement):</paragraph>
+ <paragraph index="165" node_type="writer">  Movie 1198 (score: 5.000)</paragraph>
+ <paragraph index="166" node_type="writer">  Movie 165 (score: 5.000)</paragraph>
+ <paragraph index="167" node_type="writer">  Movie 1101 (score: 5.000)</paragraph>
+ <paragraph index="168" node_type="writer">SVD:</paragraph>
+ <paragraph index="169" node_type="writer">  Movie 1196 (score: 7.140)</paragraph>
+ <paragraph index="170" node_type="writer">  Movie 6539 (score: 7.088)</paragraph>
+ <paragraph index="171" node_type="writer">  Movie 44665 (score: 6.727)</paragraph>
+ <paragraph index="173" node_type="writer">--- SYSTEM EVALUATION (10 runs) ---</paragraph>
+ <paragraph index="175" node_type="writer">Evaluating: User-Based (TreeClustering replacement)</paragraph>
+ <paragraph index="176" node_type="writer">  Run 1: MAE=1.1148, RMSE=1.5421</paragraph>
+ <paragraph index="177" node_type="writer">  Run 2: MAE=1.5042, RMSE=1.5910</paragraph>
+ <paragraph index="178" node_type="writer">  Run 3: MAE=1.2300, RMSE=1.3411</paragraph>
+ <paragraph index="179" node_type="writer">  Run 4: MAE=1.3379, RMSE=1.5140</paragraph>
+ <paragraph index="180" node_type="writer">  Run 5: MAE=1.3947, RMSE=1.8180</paragraph>
+ <paragraph index="181" node_type="writer">  Run 6: MAE=1.6253, RMSE=1.8025</paragraph>
+ <paragraph index="182" node_type="writer">  Run 7: MAE=1.3150, RMSE=1.3861</paragraph>
+ <paragraph index="183" node_type="writer">  Run 8: MAE=1.1817, RMSE=1.2760</paragraph>
+ <paragraph index="184" node_type="writer">  Run 9: MAE=1.1857, RMSE=1.9413</paragraph>
+ <paragraph index="185" node_type="writer">  Run 10: MAE=1.3928, RMSE=1.3138</paragraph>
+ <paragraph index="187" node_type="writer">Evaluating: SVDRecommender</paragraph>
+ <paragraph index="188" node_type="writer">  Run 1: MAE=1.4302, RMSE=2.0727</paragraph>
+ <paragraph index="189" node_type="writer">  Run 2: MAE=1.6866, RMSE=1.8062</paragraph>
+ <paragraph index="190" node_type="writer">  Run 3: MAE=1.0888, RMSE=1.6491</paragraph>
+ <paragraph index="191" node_type="writer">  Run 4: MAE=1.7542, RMSE=2.2735</paragraph>
+ <paragraph index="192" node_type="writer">  Run 5: MAE=1.4909, RMSE=1.5856</paragraph>
+ <paragraph index="193" node_type="writer">  Run 6: MAE=1.0974, RMSE=1.8043</paragraph>
+ <paragraph index="194" node_type="writer">  Run 7: MAE=1.2047, RMSE=1.6824</paragraph>
+ <paragraph index="195" node_type="writer">  Run 8: MAE=1.2853, RMSE=1.9394</paragraph>
+ <paragraph index="196" node_type="writer">  Run 9: MAE=1.2532, RMSE=1.3459</paragraph>
+ <paragraph index="197" node_type="writer">  Run 10: MAE=0.9320, RMSE=1.6572</paragraph>
+ <paragraph index="199" node_type="writer">------------------------------------------</paragraph>
+ <paragraph index="200" node_type="writer">FINAL RESULTS (lower = better):</paragraph>
+ <paragraph index="201" node_type="writer">------------------------------------------</paragraph>
+ <paragraph index="202" node_type="writer">User-Based (TreeClustering replacement): MAE=1.3282, RMSE=1.5526</paragraph>
+ <paragraph index="203" node_type="writer">SVDRecommender                     : MAE=1.3223, RMSE=1.7816</paragraph>
+ <paragraph index="205" node_type="writer">==========================================</paragraph>
+ <paragraph index="206" node_type="writer">BEST SYSTEMS:</paragraph>
+ <paragraph index="207" node_type="writer">==========================================</paragraph>
+ <paragraph index="208" node_type="writer">Best MAE:  SVDRecommender (1.3223)</paragraph>
+ <paragraph index="209" node_type="writer">Best RMSE: User-Based (TreeClustering replacement) (1.5526)</paragraph>
+ <paragraph index="210" node_type="writer">[INFO] ------------------------------------------------------------------------</paragraph>
+ <paragraph index="211" node_type="writer">[INFO] BUILD SUCCESS</paragraph>
+ <paragraph index="212" node_type="writer">[INFO] ------------------------------------------------------------------------</paragraph>
+ <paragraph index="213" node_type="writer">[INFO] Total time: 48.108 s</paragraph>
+ <paragraph index="214" node_type="writer">[INFO] Finished at: 2025-11-04T10:18:38+00:00</paragraph>
+ <paragraph index="215" node_type="writer">[INFO] Final Memory: 19M/1999M</paragraph>
+ <paragraph index="216" node_type="writer">[INFO] ------------------------------------------------------------------------</paragraph>
+ <paragraph index="217" node_type="writer">Листинг:</paragraph>
+ <paragraph index="219" node_type="writer">MovieRecommender.java</paragraph>
+ <paragraph index="220" node_type="writer">package com.example.recommender;</paragraph>
+ <paragraph index="222" node_type="writer">import org.apache.mahout.cf.taste.common.TasteException;</paragraph>
+ <paragraph index="223" node_type="writer">import org.apache.mahout.cf.taste.impl.model.file.FileDataModel;</paragraph>
+ <paragraph index="224" node_type="writer">import org.apache.mahout.cf.taste.impl.neighborhood.NearestNUserNeighborhood;</paragraph>
+ <paragraph index="225" node_type="writer">import org.apache.mahout.cf.taste.impl.recommender.GenericUserBasedRecommender;</paragraph>
+ <paragraph index="226" node_type="writer">import org.apache.mahout.cf.taste.impl.recommender.svd.ALSWRFactorizer;</paragraph>
+ <paragraph index="227" node_type="writer">import org.apache.mahout.cf.taste.impl.recommender.svd.SVDRecommender;</paragraph>
+ <paragraph index="228" node_type="writer">import org.apache.mahout.cf.taste.impl.similarity.PearsonCorrelationSimilarity;</paragraph>
+ <paragraph index="229" node_type="writer">import org.apache.mahout.cf.taste.model.DataModel;</paragraph>
+ <paragraph index="230" node_type="writer">import org.apache.mahout.cf.taste.neighborhood.UserNeighborhood;</paragraph>
+ <paragraph index="231" node_type="writer">import org.apache.mahout.cf.taste.recommender.RecommendedItem;</paragraph>
+ <paragraph index="232" node_type="writer">import org.apache.mahout.cf.taste.recommender.Recommender;</paragraph>
+ <paragraph index="233" node_type="writer">import org.apache.mahout.cf.taste.similarity.UserSimilarity;</paragraph>
+ <paragraph index="234" node_type="writer">import org.apache.mahout.cf.taste.eval.RecommenderBuilder;</paragraph>
+ <paragraph index="235" node_type="writer">import org.apache.mahout.cf.taste.eval.RecommenderEvaluator;</paragraph>
+ <paragraph index="236" node_type="writer">import org.apache.mahout.cf.taste.impl.eval.AverageAbsoluteDifferenceRecommenderEvaluator;</paragraph>
+ <paragraph index="237" node_type="writer">import org.apache.mahout.cf.taste.impl.eval.RMSRecommenderEvaluator;</paragraph>
+ <paragraph index="239" node_type="writer">import java.io.*;</paragraph>
+ <paragraph index="240" node_type="writer">import java.util.List;</paragraph>
+ <paragraph index="241" node_type="writer">import java.util.ArrayList;</paragraph>
+ <paragraph index="243" node_type="writer">public class MovieRecommender {</paragraph>
+ <paragraph index="245" node_type="writer">    public static void main(String[] args) throws Exception {</paragraph>
+ <paragraph index="246" node_type="writer">        System.out.println(&quot;=== MovieLens Recommendation System ===&quot;);</paragraph>
+ <paragraph index="248" node_type="writer">        String inputFile = &quot;/datasets/ml-32m/ratings.csv&quot;; // путь к исходному файлу</paragraph>
+ <paragraph index="249" node_type="writer">        String outputFile = &quot;ratings_mahout_1000.csv&quot;;</paragraph>
+ <paragraph index="251" node_type="writer">        prepareDataFirst1000(inputFile, outputFile);</paragraph>
+ <paragraph index="253" node_type="writer">        DataModel model = new FileDataModel(new File(outputFile));</paragraph>
+ <paragraph index="254" node_type="writer">        System.out.println(&quot;Data loaded: &quot; + model.getNumUsers() + &quot; users, &quot; + model.getNumItems() + &quot; movies&quot;);</paragraph>
+ <paragraph index="256" node_type="writer">        compareSystems(model);</paragraph>
+ <paragraph index="257" node_type="writer">    }</paragraph>
+ <paragraph index="259" node_type="writer">    // --- Подготовка данных ---</paragraph>
+ <paragraph index="260" node_type="writer">    static void prepareDataFirst1000(String inputPath, String outputPath) throws IOException {</paragraph>
+ <paragraph index="261" node_type="writer">        List&lt;String&gt; lines = readAllLines(inputPath);</paragraph>
+ <paragraph index="262" node_type="writer">        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputPath))) {</paragraph>
+ <paragraph index="263" node_type="writer">            int start = lines.get(0).startsWith(&quot;userId&quot;) ? 1 : 0;</paragraph>
+ <paragraph index="264" node_type="writer">            int count = 0;</paragraph>
+ <paragraph index="265" node_type="writer">            int maxLines = 1000;</paragraph>
+ <paragraph index="266" node_type="writer">            for (int i = start; i &lt; lines.size() &amp;&amp; count &lt; maxLines; i++) {</paragraph>
+ <paragraph index="267" node_type="writer">                String[] parts = lines.get(i).split(&quot;,&quot;);</paragraph>
+ <paragraph index="268" node_type="writer">                if (parts.length &gt;= 3) {</paragraph>
+ <paragraph index="269" node_type="writer">                    writer.write(parts[0] + &quot;,&quot; + parts[1] + &quot;,&quot; + parts[2] + &quot;\n&quot;);</paragraph>
+ <paragraph index="270" node_type="writer">                    count++;</paragraph>
+ <paragraph index="271" node_type="writer">                }</paragraph>
+ <paragraph index="272" node_type="writer">            }</paragraph>
+ <paragraph index="273" node_type="writer">            System.out.println(&quot;Processed &quot; + count + &quot; lines (first 1000 rows)&quot;);</paragraph>
+ <paragraph index="274" node_type="writer">        }</paragraph>
+ <paragraph index="275" node_type="writer">        System.out.println(&quot;Data prepared: &quot; + outputPath);</paragraph>
+ <paragraph index="276" node_type="writer">    }</paragraph>
+ <paragraph index="278" node_type="writer">    static List&lt;String&gt; readAllLines(String filePath) throws IOException {</paragraph>
+ <paragraph index="279" node_type="writer">        List&lt;String&gt; lines = new ArrayList&lt;&gt;();</paragraph>
+ <paragraph index="280" node_type="writer">        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {</paragraph>
+ <paragraph index="281" node_type="writer">            String line;</paragraph>
+ <paragraph index="282" node_type="writer">            while ((line = reader.readLine()) != null) {</paragraph>
+ <paragraph index="283" node_type="writer">                lines.add(line);</paragraph>
+ <paragraph index="284" node_type="writer">            }</paragraph>
+ <paragraph index="285" node_type="writer">        }</paragraph>
+ <paragraph index="286" node_type="writer">        return lines;</paragraph>
+ <paragraph index="287" node_type="writer">    }</paragraph>
+ <paragraph index="289" node_type="writer">    // --- Сравнение двух систем ---</paragraph>
+ <paragraph index="290" node_type="writer">    static void compareSystems(DataModel model) throws TasteException {</paragraph>
+ <paragraph index="291" node_type="writer">        System.out.println(&quot;\n==========================================&quot;);</paragraph>
+ <paragraph index="292" node_type="writer">        System.out.println(&quot; RECOMMENDATION SYSTEMS COMPARISON &quot;);</paragraph>
+ <paragraph index="293" node_type="writer">        System.out.println(&quot;==========================================&quot;);</paragraph>
+ <paragraph index="295" node_type="writer">        showDemoRecommendations(model);</paragraph>
+ <paragraph index="296" node_type="writer">        evaluateSystems(model);</paragraph>
+ <paragraph index="297" node_type="writer">    }</paragraph>
+ <paragraph index="299" node_type="writer">    static void showDemoRecommendations(DataModel model) throws TasteException {</paragraph>
+ <paragraph index="300" node_type="writer">        System.out.println(&quot;\n--- DEMO RECOMMENDATIONS ---&quot;);</paragraph>
+ <paragraph index="302" node_type="writer">        UserSimilarity userSimilarity = new PearsonCorrelationSimilarity(model);</paragraph>
+ <paragraph index="303" node_type="writer">        UserNeighborhood neighborhood = new NearestNUserNeighborhood(10, userSimilarity, model);</paragraph>
+ <paragraph index="304" node_type="writer">        Recommender clusteringRecommender = new GenericUserBasedRecommender(model, neighborhood, userSimilarity);</paragraph>
+ <paragraph index="306" node_type="writer">        Recommender svdRecommender = new SVDRecommender(model, new ALSWRFactorizer(model, 10, 0.065, 10));</paragraph>
+ <paragraph index="308" node_type="writer">        int[] testUsers = findAvailableUsers(model);</paragraph>
+ <paragraph index="309" node_type="writer">        for (int testUser : testUsers) {</paragraph>
+ <paragraph index="310" node_type="writer">            System.out.println(&quot;\nRecommendations for user &quot; + testUser + &quot;:&quot;);</paragraph>
+ <paragraph index="312" node_type="writer">            System.out.println(&quot;User-Based (as TreeClustering replacement):&quot;);</paragraph>
+ <paragraph index="313" node_type="writer">            printRecommendations(clusteringRecommender.recommend(testUser, 3));</paragraph>
+ <paragraph index="315" node_type="writer">            System.out.println(&quot;SVD:&quot;);</paragraph>
+ <paragraph index="316" node_type="writer">            printRecommendations(svdRecommender.recommend(testUser, 3));</paragraph>
+ <paragraph index="318" node_type="writer">            if (testUser == testUsers[1]) break; // показываем только двух пользователей</paragraph>
+ <paragraph index="319" node_type="writer">        }</paragraph>
+ <paragraph index="320" node_type="writer">    }</paragraph>
+ <paragraph index="322" node_type="writer">    static int[] findAvailableUsers(DataModel model) throws TasteException {</paragraph>
+ <paragraph index="323" node_type="writer">        List&lt;Integer&gt; users = new ArrayList&lt;&gt;();</paragraph>
+ <paragraph index="324" node_type="writer">        for (int i = 1; i &lt;= 10; i++) {</paragraph>
+ <paragraph index="325" node_type="writer">            try {</paragraph>
+ <paragraph index="326" node_type="writer">                if (model.getPreferencesFromUser(i).length() &gt;= 2) {</paragraph>
+ <paragraph index="327" node_type="writer">                    users.add(i);</paragraph>
+ <paragraph index="328" node_type="writer">                }</paragraph>
+ <paragraph index="329" node_type="writer">                if (users.size() &gt;= 3) break;</paragraph>
+ <paragraph index="330" node_type="writer">            } catch (Exception e) {}</paragraph>
+ <paragraph index="331" node_type="writer">        }</paragraph>
+ <paragraph index="332" node_type="writer">        if (users.isEmpty()) {</paragraph>
+ <paragraph index="333" node_type="writer">            users.add(1);</paragraph>
+ <paragraph index="334" node_type="writer">            users.add(2);</paragraph>
+ <paragraph index="335" node_type="writer">        }</paragraph>
+ <paragraph index="336" node_type="writer">        int[] result = new int[users.size()];</paragraph>
+ <paragraph index="337" node_type="writer">        for (int i = 0; i &lt; users.size(); i++) result[i] = users.get(i);</paragraph>
+ <paragraph index="338" node_type="writer">        return result;</paragraph>
+ <paragraph index="339" node_type="writer">    }</paragraph>
+ <paragraph index="341" node_type="writer">    static void printRecommendations(List&lt;RecommendedItem&gt; items) {</paragraph>
+ <paragraph index="342" node_type="writer">        if (items.isEmpty()) System.out.println(&quot;  No recommendations&quot;);</paragraph>
+ <paragraph index="343" node_type="writer">        else for (RecommendedItem item : items)</paragraph>
+ <paragraph index="344" node_type="writer">            System.out.printf(&quot;  Movie %d (score: %.3f)\n&quot;, item.getItemID(), item.getValue());</paragraph>
+ <paragraph index="345" node_type="writer">    }</paragraph>
+ <paragraph index="347" node_type="writer">    static void evaluateSystems(DataModel model) throws TasteException {</paragraph>
+ <paragraph index="348" node_type="writer">        System.out.println(&quot;\n--- SYSTEM EVALUATION (10 runs) ---&quot;);</paragraph>
+ <paragraph index="350" node_type="writer">        int runs = 10;</paragraph>
+ <paragraph index="351" node_type="writer">        double[] results1 = evaluateSystem(model, runs, &quot;User-Based (TreeClustering replacement)&quot;,</paragraph>
+ <paragraph index="352" node_type="writer">                new RecommenderBuilder() {</paragraph>
+ <paragraph index="353" node_type="writer">                    public Recommender buildRecommender(DataModel model) throws TasteException {</paragraph>
+ <paragraph index="354" node_type="writer">                        UserSimilarity similarity = new PearsonCorrelationSimilarity(model);</paragraph>
+ <paragraph index="355" node_type="writer">                        UserNeighborhood neighborhood = new NearestNUserNeighborhood(20, similarity, model);</paragraph>
+ <paragraph index="356" node_type="writer">                        return new GenericUserBasedRecommender(model, neighborhood, similarity);</paragraph>
+ <paragraph index="357" node_type="writer">                    }</paragraph>
+ <paragraph index="358" node_type="writer">                });</paragraph>
+ <paragraph index="360" node_type="writer">        double[] results2 = evaluateSystem(model, runs, &quot;SVDRecommender&quot;,</paragraph>
+ <paragraph index="361" node_type="writer">                new RecommenderBuilder() {</paragraph>
+ <paragraph index="362" node_type="writer">                    public Recommender buildRecommender(DataModel model) throws TasteException {</paragraph>
+ <paragraph index="363" node_type="writer">                        return new SVDRecommender(model, new ALSWRFactorizer(model, 10, 0.065, 10));</paragraph>
+ <paragraph index="364" node_type="writer">                    }</paragraph>
+ <paragraph index="365" node_type="writer">                });</paragraph>
+ <paragraph index="367" node_type="writer">        System.out.println(&quot;\n------------------------------------------&quot;);</paragraph>
+ <paragraph index="368" node_type="writer">        System.out.println(&quot;FINAL RESULTS (lower = better):&quot;);</paragraph>
+ <paragraph index="369" node_type="writer">        System.out.println(&quot;------------------------------------------&quot;);</paragraph>
+ <paragraph index="370" node_type="writer">        printResults(&quot;User-Based (TreeClustering replacement)&quot;, results1);</paragraph>
+ <paragraph index="371" node_type="writer">        printResults(&quot;SVDRecommender&quot;, results2);</paragraph>
+ <paragraph index="373" node_type="writer">        findBestSystem(results1, results2);</paragraph>
+ <paragraph index="374" node_type="writer">    }</paragraph>
+ <paragraph index="376" node_type="writer">    static double[] evaluateSystem(DataModel model, int runs, String name, RecommenderBuilder builder)</paragraph>
+ <paragraph index="377" node_type="writer">            throws TasteException {</paragraph>
+ <paragraph index="378" node_type="writer">        System.out.println(&quot;\nEvaluating: &quot; + name);</paragraph>
+ <paragraph index="380" node_type="writer">        RecommenderEvaluator maeEval = new AverageAbsoluteDifferenceRecommenderEvaluator();</paragraph>
+ <paragraph index="381" node_type="writer">        RecommenderEvaluator rmseEval = new RMSRecommenderEvaluator();</paragraph>
+ <paragraph index="383" node_type="writer">        double totalMAE = 0, totalRMSE = 0;</paragraph>
+ <paragraph index="384" node_type="writer">        for (int i = 0; i &lt; runs; i++) {</paragraph>
+ <paragraph index="385" node_type="writer">            try {</paragraph>
+ <paragraph index="386" node_type="writer">                double mae = maeEval.evaluate(builder, null, model, 0.7, 1.0);</paragraph>
+ <paragraph index="387" node_type="writer">                double rmse = rmseEval.evaluate(builder, null, model, 0.7, 1.0);</paragraph>
+ <paragraph index="388" node_type="writer">                totalMAE += mae;</paragraph>
+ <paragraph index="389" node_type="writer">                totalRMSE += rmse;</paragraph>
+ <paragraph index="390" node_type="writer">                System.out.printf(&quot;  Run %d: MAE=%.4f, RMSE=%.4f\n&quot;, i + 1, mae, rmse);</paragraph>
+ <paragraph index="391" node_type="writer">            } catch (Exception e) {</paragraph>
+ <paragraph index="392" node_type="writer">                System.out.printf(&quot;  Run %d: Error in evaluation\n&quot;, i + 1);</paragraph>
+ <paragraph index="393" node_type="writer">            }</paragraph>
+ <paragraph index="394" node_type="writer">        }</paragraph>
+ <paragraph index="395" node_type="writer">        return new double[]{totalMAE / runs, totalRMSE / runs};</paragraph>
+ <paragraph index="396" node_type="writer">    }</paragraph>
+ <paragraph index="398" node_type="writer">    static void printResults(String name, double[] results) {</paragraph>
+ <paragraph index="399" node_type="writer">        System.out.printf(&quot;%-35s: MAE=%.4f, RMSE=%.4f\n&quot;, name, results[0], results[1]);</paragraph>
+ <paragraph index="400" node_type="writer">    }</paragraph>
+ <paragraph index="402" node_type="writer">    static void findBestSystem(double[] res1, double[] res2) {</paragraph>
+ <paragraph index="403" node_type="writer">        String[] names = {&quot;User-Based (TreeClustering replacement)&quot;, &quot;SVDRecommender&quot;};</paragraph>
+ <paragraph index="404" node_type="writer">        double[][] all = {res1, res2};</paragraph>
+ <paragraph index="406" node_type="writer">        int bestMAE = res1[0] &lt; res2[0] ? 0 : 1;</paragraph>
+ <paragraph index="407" node_type="writer">        int bestRMSE = res1[1] &lt; res2[1] ? 0 : 1;</paragraph>
+ <paragraph index="409" node_type="writer">        System.out.println(&quot;\n==========================================&quot;);</paragraph>
+ <paragraph index="410" node_type="writer">        System.out.println(&quot;BEST SYSTEMS:&quot;);</paragraph>
+ <paragraph index="411" node_type="writer">        System.out.println(&quot;==========================================&quot;);</paragraph>
+ <paragraph index="412" node_type="writer">        System.out.printf(&quot;Best MAE:  %s (%.4f)\n&quot;, names[bestMAE], all[bestMAE][0]);</paragraph>
+ <paragraph index="413" node_type="writer">        System.out.printf(&quot;Best RMSE: %s (%.4f)\n&quot;, names[bestRMSE], all[bestRMSE][1]);</paragraph>
+ <paragraph index="414" node_type="writer">    }</paragraph>
+ <paragraph index="415" node_type="writer">}</paragraph>
+ <paragraph index="417" node_type="writer">pom.xml</paragraph>
+ <paragraph index="418" node_type="writer">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</paragraph>
+ <paragraph index="419" node_type="writer">&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;</paragraph>
+ <paragraph index="420" node_type="writer">         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</paragraph>
+ <paragraph index="421" node_type="writer">         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 </paragraph>
+ <paragraph index="422" node_type="writer">                             http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;</paragraph>
+ <paragraph index="423" node_type="writer">    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</paragraph>
+ <paragraph index="424" node_type="writer">    </paragraph>
+ <paragraph index="425" node_type="writer">    &lt;groupId&gt;com.example&lt;/groupId&gt;</paragraph>
+ <paragraph index="426" node_type="writer">    &lt;artifactId&gt;movie-recommender&lt;/artifactId&gt;</paragraph>
+ <paragraph index="427" node_type="writer">    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;</paragraph>
+ <paragraph index="428" node_type="writer">    </paragraph>
+ <paragraph index="429" node_type="writer">    &lt;properties&gt;</paragraph>
+ <paragraph index="430" node_type="writer">        &lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;</paragraph>
+ <paragraph index="431" node_type="writer">        &lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;</paragraph>
+ <paragraph index="432" node_type="writer">        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</paragraph>
+ <paragraph index="433" node_type="writer">    &lt;/properties&gt;</paragraph>
+ <paragraph index="434" node_type="writer">    </paragraph>
+ <paragraph index="435" node_type="writer">    &lt;dependencies&gt;</paragraph>
+ <paragraph index="436" node_type="writer">        &lt;dependency&gt;</paragraph>
+ <paragraph index="437" node_type="writer">            &lt;groupId&gt;org.apache.mahout&lt;/groupId&gt;</paragraph>
+ <paragraph index="438" node_type="writer">            &lt;artifactId&gt;mahout-mr&lt;/artifactId&gt;</paragraph>
+ <paragraph index="439" node_type="writer">            &lt;version&gt;0.13.0&lt;/version&gt;</paragraph>
+ <paragraph index="440" node_type="writer">        &lt;/dependency&gt;</paragraph>
+ <paragraph index="441" node_type="writer">        &lt;dependency&gt;</paragraph>
+ <paragraph index="442" node_type="writer">            &lt;groupId&gt;org.apache.mahout&lt;/groupId&gt;</paragraph>
+ <paragraph index="443" node_type="writer">            &lt;artifactId&gt;mahout-integration&lt;/artifactId&gt;</paragraph>
+ <paragraph index="444" node_type="writer">            &lt;version&gt;0.13.0&lt;/version&gt;</paragraph>
+ <paragraph index="445" node_type="writer">        &lt;/dependency&gt;</paragraph>
+ <paragraph index="446" node_type="writer">        &lt;dependency&gt;</paragraph>
+ <paragraph index="447" node_type="writer">            &lt;groupId&gt;com.google.guava&lt;/groupId&gt;</paragraph>
+ <paragraph index="448" node_type="writer">            &lt;artifactId&gt;guava&lt;/artifactId&gt;</paragraph>
+ <paragraph index="449" node_type="writer">            &lt;version&gt;19.0&lt;/version&gt;</paragraph>
+ <paragraph index="450" node_type="writer">        &lt;/dependency&gt;</paragraph>
+ <paragraph index="451" node_type="writer">    &lt;/dependencies&gt;</paragraph>
+ <paragraph index="452" node_type="writer">    </paragraph>
+ <paragraph index="453" node_type="writer">    &lt;build&gt;</paragraph>
+ <paragraph index="454" node_type="writer">        &lt;plugins&gt;</paragraph>
+ <paragraph index="455" node_type="writer">            &lt;plugin&gt;</paragraph>
+ <paragraph index="456" node_type="writer">                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</paragraph>
+ <paragraph index="457" node_type="writer">                &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;</paragraph>
+ <paragraph index="458" node_type="writer">                &lt;version&gt;3.8.1&lt;/version&gt;</paragraph>
+ <paragraph index="459" node_type="writer">                &lt;configuration&gt;</paragraph>
+ <paragraph index="460" node_type="writer">                    &lt;source&gt;1.8&lt;/source&gt;</paragraph>
+ <paragraph index="461" node_type="writer">                    &lt;target&gt;1.8&lt;/target&gt;</paragraph>
+ <paragraph index="462" node_type="writer">                &lt;/configuration&gt;</paragraph>
+ <paragraph index="463" node_type="writer">            &lt;/plugin&gt;</paragraph>
+ <paragraph index="464" node_type="writer">        &lt;/plugins&gt;</paragraph>
+ <paragraph index="465" node_type="writer">    &lt;/build&gt;</paragraph>
+ <paragraph index="466" node_type="writer">&lt;/project&gt;</paragraph>
+ <paragraph index="468" node_type="writer">Вывод: в ходе выполнения лабораторной работы были реализованы две рекомендательные системы по подбору рекомендаций фильмов.</paragraph>
+</indexing>

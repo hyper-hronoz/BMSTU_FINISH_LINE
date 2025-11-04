@@ -140,6 +140,22 @@ services:
     ports:
       - "8089:8089"
 
+  pig:
+    build:
+      context: .
+      dockerfile: Dockerfile.pig
+    container_name: pig
+    depends_on:
+      - namenode
+      - datanode
+    environment:
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
+    volumes:
+      - ./scripts:/scripts
+      - ./datasets:/datasets
+    stdin_open: true
+    tty: true      
+
 volumes:
   hadoop_namenode:
   hadoop_datanode:
